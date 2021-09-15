@@ -8,26 +8,66 @@ Author      : Themeix  - https://themeix.com
 */
 
 .typofix {
-	--background-color: #F3F6FA;
+	--link-color:#3366ff;
 	--border-color: #e3e4e4;
-	--color: #666;
-	--blockquote-color: #36f;
+	--blockquote-bg: #ffffff;
+	--blockquote-border: #3366ff;
 	--mark-color: #ffeb3b;
-	--body-line-height: 1.7;
-	--heading-line-height: 1.3;
 	--base-font-size: 16px;
-	text-rendering: auto;
-}
-
+	--text-font-family: Arial, Helvetica, sans-serif;
+	--text-font-weight: 400;
+	--text-line-height: 1.7;
+	--heading-font-family: "Times New Roman", Times, serif;
+	--heading-line-height: 1.3;
+	--heading-font-weight: 600; 
+	--spacing-size: 16px;  
+} 
 
 /*
   Reset .typofix element styles to avoid unwanted inheritance
 */
-
-.typofix * {
-	box-sizing: border-box;
+.typofix *{
+	font-family: var(--text-font-family);
+	line-height: var(--text-line-height);
+	font-weight: var(--text-font-weight);
+}
+/*
+  Block-level elements
+*/
+.typofix h1,
+.typofix h2,
+.typofix h3,
+.typofix h4,
+.typofix h5,
+.typofix h6 {
+	font-family: var(--heading-font-family);
+	font-weight: var(--heading-font-weight);
+	line-height: var(--base-line-height);
+	margin-bottom: var(--spacing-size);
+}
+.typofix h1 {
+	font-size: calc(var(--base-font-size) * 2.75);
 }
 
+.typofix h2 {
+	font-size: calc(var(--base-font-size) * 2.25);
+}
+
+.typofix h3 {
+	font-size: calc(var(--base-font-size) * 1.5);
+}
+
+.typofix h4 {
+	font-size: calc(var(--base-font-size) * 1.25);
+}
+
+.typofix h5 {
+	font-size: calc(var(--base-font-size) * 1);
+}
+
+.typofix h6 {
+	font-size: calc(var(--base-font-size) * 0.75);
+}
 .typofix a,
 .typofix abbr,
 .typofix acronym,
@@ -82,37 +122,13 @@ Author      : Themeix  - https://themeix.com
 .typofix iframe,
 .typofix img,
 .typofix object {
-	line-height: var(--body-line-height);
+	line-height: var(--text-line-height);
 }
-
-
-/*
-  Baseline grid (for debugging baseline grid)
-*/
-
-.typofix.typofix-baseline {
-	background-image: linear-gradient(to bottom, magenta 0, rgba(255, 255, 255, 0) 1px);
-	background-repeat: repeat-y;
-	background-size: 100% 1.5em;
-}
-
 
 /*
   Initialize spacing and colors
 */
-
-.typofix li,
-.typofix dt,
-.typofix dd,
-.typofix p,
-.typofix pre,
-.typofix caption,
-.typofix th,
-.typofix td,
-.typofix figcaption {
-	line-height: var(--body-line-height);
-}
-
+.typofix figure,
 .typofix caption,
 .typofix dl,
 .typofix dd,
@@ -121,15 +137,8 @@ Author      : Themeix  - https://themeix.com
 .typofix table,
 .typofix ol,
 .typofix ul {
-	margin: 0 0 1.25rem 0;
-}
-
-.typofix blockquote,
-.typofix ol,
-.typofix ul {
-	margin-left: 2.5rem;
-}
-
+	margin-bottom: var(--spacing-size);
+} 
 .typofix pre,
 .typofix table,
 .typofix th,
@@ -137,21 +146,36 @@ Author      : Themeix  - https://themeix.com
 	border: 1px solid #DBE2F2;
 	border-color: var(--border-color);
 }
-
-
 /*
   Inline elements
 */
-
+.typofix blockquote {
+	border-left: .2em solid;
+	border-left-color: var(--blockquote-border);
+	background-color: var(--blockquote-bg);
+	margin-left: 0;
+	font-style: italic;
+	padding-left: .8em;
+	margin-top: 1.5em;
+}
+.typofix pre {
+	border-radius: 2px;
+	display: block;
+	font-size: .75em;
+	line-height: 2;
+	max-width: 100%;
+	overflow: scroll;
+	padding: calc(1em - 1px) 1.5em;
+	white-space: pre-wrap;
+}
 .typofix a {
 	text-decoration: underline;
+	color: var(--link-color);
 }
-
 .typofix strong,
 .typofix b {
 	font-weight: bolder;
 }
-
 .typofix u,
 .typofix em,
 .typofix i {
@@ -162,23 +186,12 @@ Author      : Themeix  - https://themeix.com
 .typofix abbr[title] {
 	border-bottom: 1px dotted gray;
 }
-
-.typofix address {
-	/* no style */
-}
-
 .typofix cite {
 	font-style: italic;
 }
-
 .typofix code {
 	padding: 0.1em 0.2em;
 }
-
-.typofix dfn {
-	/* no style */
-}
-
 .typofix del {
 	color: red;
 	text-decoration: line-through;
@@ -201,9 +214,6 @@ Author      : Themeix  - https://themeix.com
 	background-color: rgba(0, 140, 255, 0.1);
 	background-color: var(--mark-color);
 }
-
-.typofix samp {}
-
 .typofix small {
 	font-size: .75em;
 }
@@ -211,7 +221,6 @@ Author      : Themeix  - https://themeix.com
 .typofix s {
 	text-decoration: line-through;
 }
-
 .typofix sub {
 	font-size: 80%;
 	vertical-align: sub;
@@ -230,24 +239,9 @@ Author      : Themeix  - https://themeix.com
 /*
   Lists
 */
-
-.typofix ol,
-.typofix ul {
-	/* margin set above */
-}
-
-.typofix ol ol,
-.typofix ul ul,
-.typofix ol ul,
-.typofix ul ol {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
 .typofix ol {
 	list-style: decimal;
 }
-
 .typofix ol ol {
 	list-style: lower-alpha;
 }
@@ -255,119 +249,21 @@ Author      : Themeix  - https://themeix.com
 .typofix ol ol ol {
 	list-style: lower-roman;
 }
-
 .typofix ol ol ol ol {
 	list-style: decimal;
 }
 
 .typofix ul {
-	list-style: default;
+	list-style: circle;
 }
-
-.typofix li {
-	/* line-height set above */
-}
-
-.typofix dl {
-	/* margin set above */
-}
-
 .typofix dt {
 	font-weight: bold;
 	/* line-height set above */
 }
-
 .typofix dd {
 	/* line-height set above */
 	margin-top: 0;
 }
-
-
-/*
-  Block-level elements
-*/
-
-.typofix h1,
-.typofix h2,
-.typofix h3,
-.typofix h4,
-.typofix h5,
-.typofix h6 {
-	font-weight: bold;
-	margin: 1.75rem 0 1.25rem 0;
-	line-height: var(--heading-line-height)
-}
-
-.typofix h1 {
-	font-size: calc(var(--base-font-size) * 2.75);
-}
-
-.typofix h2 {
-	font-size: calc(var(--base-font-size) * 2.25);
-}
-
-.typofix h3 {
-	font-size: calc(var(--base-font-size) * 1.5);
-}
-
-.typofix h4 {
-	font-size: calc(var(--base-font-size) * 1.25);
-}
-
-.typofix h5 {
-	font-size: calc(var(--base-font-size) * 1);
-}
-
-.typofix h6 {
-	font-size: calc(var(--base-font-size) * 0.75);
-}
-
-@media (max-width: 767px) {
-	h1,
-	.h1 {
-		font-size: calc(var(--base-font-size) * 2);
-	}
-	h2,
-	.h2 {
-		font-size: calc(var(--base-font-size) * 1.5);
-	}
-}
-
-.typofix p {
-	/* line-height set above */
-	/* margin set above */
-}
-
-.typofix blockquote {
-	border-left: .2em solid;
-	border-left-color: var(--blockquote-color);
-	margin-left: 0;
-	font-style: italic;
-	padding-left: .8em;
-	margin-top: 1.5em;
-}
-
-.typofix-wysiwyg blockquote {
-	border-left: none;
-	margin-left: 3em;
-	opacity: 1;
-}
-
-.typofix pre {
-	/* background-color set above */
-	border-radius: 2px;
-	/* color set above */
-	display: block;
-	font-size: .75em;
-	line-height: 2;
-	margin: 0 0 2em 0;
-	max-width: 100%;
-	overflow: scroll;
-	padding: calc(1em - 1px) 1.5em;
-	white-space: pre-wrap;
-}
-
-
 /*
   Tables
 */
@@ -378,7 +274,6 @@ Author      : Themeix  - https://themeix.com
 	/* margin set above */
 	table-layout: auto;
 }
-
 .typofix caption {
 	caption-side: top;
 	font-weight: bold;
@@ -387,19 +282,6 @@ Author      : Themeix  - https://themeix.com
 	margin-top: 0;
 	text-align: left;
 }
-
-.typofix thead {
-	/* no style */
-}
-
-.typofix tbody {
-	/* no style */
-}
-
-.typofix tfoot {
-	/* no style */
-}
-
 .typofix th,
 .typofix td {
 	/* border set above */
@@ -408,34 +290,16 @@ Author      : Themeix  - https://themeix.com
 	padding: calc(.75em - .5px);
 	text-align: left;
 }
-
-.typofix th {
-	/* background-color set above */
-	font-weight: normal;
-}
-
-.typofix td {
-	/* no style */
-}
-
-
 /*
   Media
 */
-
 .typofix embed,
 .typofix iframe,
-.typofix img,
+.typofix figure img,
 .typofix object {
-	display: inline;
+	display: inline-block;
 	max-width: 100%;
 }
-
-.typofix figure {
-	max-width: 100%;
-	/* margin set above */
-}
-
 .typofix figcaption {
 	font-size: .75em;
 	line-height: 2;
